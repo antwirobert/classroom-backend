@@ -2,6 +2,8 @@ import express from "express";
 import { toNodeHandler } from "better-auth/node";
 import cors from "cors";
 import subjectsRouter from "./routes/subjects";
+import usersRouter from "./routes/users";
+import classesRouter from "./routes/classes";
 import securityMiddleware from "./middleware/security";
 import { auth } from "./lib/auth";
 
@@ -23,6 +25,8 @@ app.use(express.json());
 app.use(securityMiddleware);
 
 app.use("/api/subjects", subjectsRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/classes", classesRouter);
 
 app.listen(PORT, () =>
   console.log(`Server is running on port http://localhost:${PORT}`),
